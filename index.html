@@ -14,49 +14,45 @@
     <title>Document</title>
   </head>
   <body>
-    <header class="navigation-bar">
-      <h4>Where in the world?</h4>
-      <div class="container-dark">
-        <img class="image-dark" src="./images/moon-outline.svg" alt="" />
-        <button class="button-dark">Dark Mode</button>
+    <header>
+      <div class="header-container">
+        <h1>Where in the world?</h1>
+        <div class="container-dark">
+          <img class="image-dark" src="./images/moon-outline.svg" alt="" />
+          <button class="button-dark">Dark Mode</button>
+        </div>
       </div>
     </header>
+
     <main>
-      <div class="buttons">
-        <div class="container-search">
-          <img class="image-search" src="./images/search-outline.svg" alt="" />
-          <input
-            class="search"
-            type="text"
-            placeholder="Search for a country..."
-          />
-        </div>
-        <select class="button-filter" name="region-selector">
-          <option value="none">Filter by Region</option>
-          <option value="Africa">Africa</option>
-          <option value="America">America</option>
-          <option value="Asia">Asia</option>
-          <option value="Europa">Europa</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </div>
-      <section class="countries-list">
-        <a href="/country.html">
-          <div class="card-country">
-            <img src="https://flagcdn.com/w320/de.png" class="flag-image" />
-            <div class="text-countries">
-              <h6>Germany</h6>
-              <div class="description-countries">
-                <span><span>Population:</span> 81.770.900</span>
-                <span><span>Region:</span> Europe</span>
-                <span><span>Capital:</span> Berlin</span>
-              </div>
-            </div>
+      <div class="content-container">
+        <div class="actions-container">
+          <div class="search-container">
+            <img
+              class="image-search"
+              src="./images/search-outline.svg"
+              alt=""
+            />
+            <input
+              class="search"
+              type="text"
+              placeholder="Search for a country..."
+            />
           </div>
-        </a>
-      </section>
+          <select class="button-filter" name="region-selector">
+            <option value="none">Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europa">Europa</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
+
+        <section class="countries-list"></section>
+      </div>
     </main>
 
-    <script src="./assets/index.js"></script>
+    <script src="./assets/index.js" type="module"></script>
   </body>
 </html>
