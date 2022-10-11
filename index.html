@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="navigation-bar">
+      <h4>Where in the world?</h4>
+      <div class="container-dark">
+        <img class="image-dark" src="./images/moon-outline.svg" alt="" />
+        <button class="button-dark">Dark Mode</button>
+      </div>
+    </header>
+    <main>
+      <div class="buttons">
+        <div class="container-search">
+          <img class="image-search" src="./images/search-outline.svg" alt="" />
+          <input
+            class="search"
+            type="text"
+            placeholder="Search for a country..."
+          />
+        </div>
+        <select class="button-filter" name="region-selector">
+          <option value="none">Filter by Region</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europa">Europa</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+      <section class="countries-list">
+        <a href="/country.html">
+          <div class="card-country">
+            <img src="https://flagcdn.com/w320/de.png" class="flag-image" />
+            <div class="text-countries">
+              <h6>Germany</h6>
+              <div class="description-countries">
+                <span><span>Population:</span> 81.770.900</span>
+                <span><span>Region:</span> Europe</span>
+                <span><span>Capital:</span> Berlin</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </section>
+    </main>
+
+    <script src="./assets/index.js"></script>
+  </body>
+</html>
