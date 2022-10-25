@@ -5,6 +5,7 @@
   --dark-gray-light-mode-input: hsl(0, 0%, 52%);
   --very-light-gray-light-mode-background: hsl(0, 0%, 98%);
   --white-dark-mode-text-light-mode-elements: hsl(0, 0%, 100%);
+  --containers-padding: 0 0.8rem;
 }
 
 * {
@@ -20,23 +21,42 @@ body {
   background-color: var(--very-light-gray-light-mode-background);
 }
 
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid gray;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 header {
-  height: 50px;
+  height: 60px;
   background-color: var(--white-dark-mode-text-light-mode-elements);
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .header-container {
-  max-width: 1140px;
-  margin: 0 auto;
+  padding: var(--containers-padding);
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
-h1{
-  font-size: 1.5rem;
+h1 {
+  font-size: 1.25rem;
 }
 
 .container-dark {
@@ -54,22 +74,25 @@ h1{
   margin-left: 5px;
 }
 
-.content-container{
-padding-top: 2rem;
-max-width: 1140px;
-margin: 0 auto;
+.content-container {
+  padding: var(--containers-padding);
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-.actions-container{
+.actions-container {
+  padding-top: 2rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.search-container{
-  position: relative;
+.search-container {
   background-color: var(--white-dark-mode-text-light-mode-elements);
-  display: flex;
   align-items: center;
+  height: 50px;
+  display: flex;
+  width: 100%;
+  position: relative;
 }
 
 .image-search {
@@ -81,59 +104,64 @@ margin: 0 auto;
 .search {
   background-color: var(--white-dark-mode-text-light-mode-elements);
   border: none;
-  height: 35px;
-  width: 300px;
+  height: 50px;
+  width: 100%;
   font-size: 0.75rem;
   padding-left: 35px;
   position: absolute;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.10);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-.button-filter {
+.select-regions {
   background-color: var(--white-dark-mode-text-light-mode-elements);
   border: none;
-  height: 35px;
-  width: 120px;
+  height: 50px;
+  width: 50%;
   font-size: 0.75rem;
   color: var(--very-dark-blue-light-mode-text);
+  margin-top:40px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  padding: 0 0.5rem;
 }
 
-.countries-list{
+.countries-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
   padding-top: 2rem;
+  width: 100%;
+  justify-content: center;
+  gap: 30px;
 }
 
-.countries-list  > a {
- text-decoration: none;
- color: black;
-}
-
-.countries-list  > a:visited {
+.countries-list > a {
+  text-decoration: none;
   color: black;
- }
+  width: 90%;
+}
 
-.card-country{
-  max-width: 180px;
+.countries-list > a:visited {
+  color: black;
+}
+
+.card-country {
+  width: 100%;
+  height: 100%;
   background-color: var(--white-dark-mode-text-light-mode-elements);
   border-radius: 5px;
-  box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.10);
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .flag-image {
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  max-height: 120px;
-  min-width: 180px;
 }
 
-.text-countries{
+.text-countries {
   padding: 10px;
 }
 
-.description-countries{
+.description-countries {
   font-size: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -141,7 +169,7 @@ margin: 0 auto;
 }
 
 .description-countries > span {
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .description-countries > span > span {
@@ -150,13 +178,13 @@ margin: 0 auto;
 
 /* country detail page */
 
-.container-detail-light{
+.container-detail-light {
   padding-top: 2rem;
   width: 100%;
   display: flex;
 }
 
-.container-flag{
+.container-flag {
   width: calc(45% - 30px);
 }
 
@@ -164,27 +192,27 @@ margin: 0 auto;
   width: 90%;
 }
 
-.container-button-back{
- display: flex;
- justify-content: center;
- align-items: center;
- box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.20);
- height: 25px;
- width: 80px;
- background-color: var(--white-dark-mode-text-light-mode-elements);
- border-radius: 5px;
- margin-bottom: 40px;
+.container-button-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  height: 25px;
+  width: 80px;
+  background-color: var(--white-dark-mode-text-light-mode-elements);
+  border-radius: 5px;
+  margin-bottom: 40px;
 }
 
-.image-arrow{
+.image-arrow {
   height: 15px;
 }
 
-.button-back{
+.button-back {
   background-color: var(--white-dark-mode-text-light-mode-elements);
   color: var(--dark-gray-light-mode-input);
   border: none;
-  font-size: .75rem;
+  font-size: 0.75rem;
   margin-left: 5px;
   text-decoration: none;
 }
@@ -194,13 +222,13 @@ margin: 0 auto;
   padding: 0 30px 0 30px;
 }
 
-.country-all-detail-container > h2{
+.country-all-detail-container > h2 {
   margin-top: 80px;
 }
 
-.country-details-container{
+.country-details-container {
   display: flex;
-  font-size: .75rem;
+  font-size: 0.75rem;
   margin-top: 10px;
   justify-content: space-between;
 }
@@ -211,29 +239,69 @@ margin: 0 auto;
 
 .country-details-container p {
   margin-bottom: 5px;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
-.country-details-container  p > span {
+.country-details-container p > span:first-child {
   font-weight: bold;
 }
 
-.borders-container{
+.borders-container {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.borders-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.border-list {
   display: flex;
   gap: 6px;
-  margin-top: 30px;
+  padding: 0 6px;
 }
 
-.borders-label{
-  font-size: .75rem;
-  font-weight: bold;
-}
-
-.borders{
-  font-size: .75rem;
+.borders {
+  font-size: 0.75rem;
   width: 50px;
   height: 20px;
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
   text-align: center;
   padding-top: 2px;
+}
+
+/* las media query sirven para validar las caracteristicas
+del dispositivo en que se esta ejecutando la aplicacion y basados
+en esas caracteristicas aplicar estilos especificos */
+@media screen and (min-width: 768px)  {
+ .countries-list{
+  justify-content: space-between;
+ }
+
+ .countries-list > a {
+  max-width: 180px;
+  height: 230px;
+ }
+}
+
+@media screen and (min-width: 992px) {
+  .header-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .actions-container{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .search-container {
+    width: 40%;
+  }
+
+  .select-regions {
+    margin-top: 0;
+    width: 20%;
+  }
 }

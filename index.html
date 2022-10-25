@@ -25,6 +25,7 @@
     </header>
 
     <main>
+      </div>
       <div class="content-container">
         <div class="actions-container">
           <div class="search-container">
@@ -39,17 +40,19 @@
               placeholder="Search for a country..."
             />
           </div>
-          <select class="button-filter" name="region-selector">
-            <option value="none">Filter by Region</option>
+          <select class="select-regions" name="region-selector">
+            <option value="">Filter by Region</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
             <option value="Asia">Asia</option>
-            <option value="Europa">Europa</option>
+            <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
         </div>
 
-        <section class="countries-list"></section>
+        <section class="countries-list">
+        <div class="spinner"></div>
+        </section>
       </div>
     </main>
 
