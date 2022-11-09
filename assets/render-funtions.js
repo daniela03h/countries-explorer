@@ -1,19 +1,20 @@
-//listCountries: lista de paisea a pintar
-//node: Elemento HTML donde se va pintar la lista
+// listCountries: lista de paisea a pintar
+// node: Elemento HTML donde se va pintar la lista
+// https://daniela03h.github.io/countries-explorer/
 
 export function renderCountryCard(listCountries, node) {
   const $countries = listCountries
     .map(function (country) {
-      return countryCardTemplate(country);
+      return countryCardTemplate(country)
     })
-    .join("\n");
+    .join('\n')
 
-  node.innerHTML = $countries;
+  node.innerHTML = $countries
 }
 
 function countryCardTemplate(country) {
   return `
-  <a href="/country.html?countryName=${country.name.common.toLowerCase()}">
+  <a href="${generateHref(country.name.common)}">
   <div class="card-country">
     <img src="${country.flags.png}" class="flag-image" />
     <div class="text-countries">
@@ -21,20 +22,30 @@ function countryCardTemplate(country) {
       <div class="description-countries">
         <span><span>Population:</span> ${country.population}</span>
         <span><span>Region:</span> ${country.region}</span>
-        <span><span>Capital:</span> ${country.capital?.join(", ")}</span>
+        <span><span>Capital:</span> ${country.capital?.join(', ')}</span>
       </div>
     </div>
   </div>
 </a>
-`;
+`
 }
 
 export function rederBordes(borders) {
-  const cca3 = JSON.parse(localStorage.getItem("countriesByCca3"));
+  const cca3 = JSON.parse(localStorage.getItem('countriesByCca3'))
   return borders
-    .map((border) => `
-    <a class="borders" href="/country.html?countryName=${cca3[border].name.common.toLowerCase()}">
+    .map(
+      border => `
+    <a class="borders" href="${generateHref(cca3[border].name.common)}">
     ${cca3[border].name.common}
-    </a>`)
-    .join("\n");
+    </a>`
+    )
+    .join('\n')
+}
+
+function generateHref(countryName) {
+  if (window.location.hostname.includes('github')) {
+    return `/countries-explorer/country.html?countryName=${countryName.toLowerCase()}`
+  }
+
+  return `/country.html?countryName=${countryName.toLowerCase()}`
 }
