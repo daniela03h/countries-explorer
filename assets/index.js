@@ -1,3 +1,4 @@
+import('./toggle-dark-mode.js')
 import {renderCountryCard} from "./render-funtions.js"
 import {fetchCountries} from "./api.js"
 
@@ -35,7 +36,20 @@ $selectRegions.addEventListener("change", function () {
 });
 
 async function main() {
-  countries = await fetchCountries();
+
+  countries = JSON.parse(localStorage.getItem('countries')) || []
+
+  if(countries.length === 0){
+    countries = await fetchCountries()
+    const countriesByCca3 = countries.reduce((accum, country) => {
+      return {
+        ...accum,
+        [country.cca3]: country
+      }
+    }, {})
+    localStorage.setItem('countriesByCca3', JSON.stringify(countriesByCca3))
+    localStorage.setItem('countries', JSON.stringify(countries))
+  }
   renderCountryCard(countries, $countriesList);
 }
 

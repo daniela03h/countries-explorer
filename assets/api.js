@@ -10,5 +10,5 @@ export async function fetchCountry(Name) {
   const url = `${apiUrl}/name/${Name}`;
   const response = await fetch(url);
   const body = await response.json();
-  return body;
+  return body[0];
 }

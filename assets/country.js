@@ -1,3 +1,4 @@
+import("./toggle-dark-mode.js");
 import { fetchCountry } from "./api.js";
 import { rederBordes } from "./render-funtions.js";
 
@@ -14,8 +15,13 @@ const $languages = document.querySelector(".languages");
 const $bordersList = document.querySelector(".border-list");
 
 window.addEventListener("load", async function () {
+  let country = [];
   const params = new URLSearchParams(window.location.search);
-  const [country] = await fetchCountry(params.get("countryName"));
+  const countryName = params.get("countryName");
+  const result = getFromLocalStorage(countryName);
+
+  // operador ternario para asignar el pais necesitado 
+  country = result ? result : await fetchCountry(countryName);
 
   $name.innerHTML = country.name.common;
   $countryFlag.src = country.flags.png;
@@ -26,11 +32,27 @@ window.addEventListener("load", async function () {
   $subRegion.innerHTML = country.subregion;
   $capital.innerHTML = country.capital;
   $topLevelDomain.innerHTML = country.tld;
-  $currencies.innerHTML = country.currencies[Object.keys(country.currencies)[0]]?.name;
+  $currencies.innerHTML =
+    country.currencies[Object.keys(country.currencies)[0]]?.name;
   $languages.innerHTML = getLanguages(country.languages);
   $bordersList.innerHTML = rederBordes(country.borders);
 });
 
 function getLanguages(lenguages) {
-  return Object.keys(lenguages).map(key => lenguages[key]).join(', ')
+  return Object.keys(lenguages)
+    .map((key) => lenguages[key])
+    .join(", ");
+}
+
+function getFromLocalStorage(countryName) {
+  const countries = JSON.parse(localStorage.getItem("countries")) || [];
+
+  if (countries.length > 0) {
+    const country = countries.find(
+      (country) => country.name.common.toLowerCase() === countryName
+    );
+    return country;
+  }
+
+  return null;
 }

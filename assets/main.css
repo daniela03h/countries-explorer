@@ -8,17 +8,31 @@
   --containers-padding: 0 0.8rem;
 }
 
+.is-light-mode {
+  --bg-color: var(--very-light-gray-light-mode-background);
+  --bg-header: var(--white-dark-mode-text-light-mode-elements);
+  --font-color: black;
+}
+
+.is-dark-mode {
+  --bg-color: var(--very-dark-blue-dark-mode-background);
+  --bg-header: var(--dark-blue-dark-mode-elements);
+  --font-color: var(--white-dark-mode-text-light-mode-elements);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 300ms ease-in-out;
 }
 
 body {
   font-family: "Nunito Sans", sans-serif;
   width: 100%;
   height: 100vh;
-  background-color: var(--very-light-gray-light-mode-background);
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 .spinner {
@@ -42,7 +56,7 @@ body {
 
 header {
   height: 60px;
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -64,11 +78,13 @@ h1 {
 }
 
 .image-dark {
-  height: 15px;
+  height: 16px;
+  color: var(--font-color);
 }
 
 .button-dark {
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
+  color: var(--font-color);
   border: none;
   font-size: 0.75rem;
   margin-left: 5px;
@@ -87,7 +103,7 @@ h1 {
 }
 
 .search-container {
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
   align-items: center;
   height: 50px;
   display: flex;
@@ -99,10 +115,11 @@ h1 {
   height: 15px;
   z-index: 1;
   margin-left: 10px;
+  color: var(--font-color);
 }
 
 .search {
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
   border: none;
   height: 50px;
   width: 100%;
@@ -113,13 +130,13 @@ h1 {
 }
 
 .select-regions {
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
   border: none;
   height: 50px;
   width: 50%;
   font-size: 0.75rem;
-  color: var(--very-dark-blue-light-mode-text);
-  margin-top:40px;
+  color: var(--font-color);
+  margin-top: 40px;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
   padding: 0 0.5rem;
 }
@@ -135,18 +152,18 @@ h1 {
 
 .countries-list > a {
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
   width: 90%;
 }
 
 .countries-list > a:visited {
-  color: black;
+  color: var(--font-color);
 }
 
 .card-country {
   width: 100%;
   height: 100%;
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  background-color: var(--bg-header);
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
@@ -182,14 +199,15 @@ h1 {
   padding-top: 2rem;
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .container-flag {
-  width: calc(45% - 30px);
+  width: 100%;
 }
 
 .container-flag > img {
-  width: 90%;
+  width: 100%;
 }
 
 .container-button-back {
@@ -197,20 +215,21 @@ h1 {
   justify-content: center;
   align-items: center;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  height: 25px;
-  width: 80px;
-  background-color: var(--white-dark-mode-text-light-mode-elements);
+  height: 35px;
+  width: 120px;
+  background-color: var(--bg-header);
   border-radius: 5px;
   margin-bottom: 40px;
 }
 
 .image-arrow {
   height: 15px;
+  color: var(--font-color);
 }
 
 .button-back {
-  background-color: var(--white-dark-mode-text-light-mode-elements);
-  color: var(--dark-gray-light-mode-input);
+  background-color: var(--bg-header);
+  color: var(--font-color);
   border: none;
   font-size: 0.75rem;
   margin-left: 5px;
@@ -218,23 +237,23 @@ h1 {
 }
 
 .country-all-detail-container {
-  width: calc(55% - 30px);
-  padding: 0 30px 0 30px;
+  width: 100%;
 }
 
 .country-all-detail-container > h2 {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .country-details-container {
   display: flex;
+  flex-direction: column;
   font-size: 0.75rem;
   margin-top: 10px;
   justify-content: space-between;
 }
 
-.country-details-container > div {
-  width: 40%;
+.country-details-container > div:last-child {
+  margin-top: 20px;
 }
 
 .country-details-container p {
@@ -248,42 +267,101 @@ h1 {
 
 .borders-container {
   display: flex;
+  flex-direction: column;
   margin-top: 30px;
-  align-items: center;
 }
 
 .borders-label {
   font-size: 0.75rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .border-list {
   display: flex;
   gap: 6px;
-  padding: 0 6px;
+  /* padding: 0 6px; */
+  flex-wrap: wrap;
 }
 
 .borders {
   font-size: 0.75rem;
-  width: 50px;
   height: 20px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
   text-align: center;
-  padding-top: 2px;
+  text-decoration: none;
+  color: var(--font-color);
+  padding: 2px 6px 0 6px;
 }
 
 /* las media query sirven para validar las caracteristicas
 del dispositivo en que se esta ejecutando la aplicacion y basados
 en esas caracteristicas aplicar estilos especificos */
-@media screen and (min-width: 768px)  {
- .countries-list{
-  justify-content: space-between;
- }
 
- .countries-list > a {
-  max-width: 180px;
-  height: 230px;
- }
+/*pantallas de tables y mas grandes */
+@media screen and (min-width: 768px) {
+  .countries-list {
+    justify-content: space-between;
+  }
+
+  .countries-list > a {
+    max-width: 180px;
+    height: 260px;
+  }
+
+  .flag-image {
+    max-height: 118px;
+  }
+
+  .container-detail-light {
+    flex-direction: row;
+  }
+
+  .container-flag {
+    width: calc(45% - 30px);
+    height: 70px;
+  }
+
+  .container-flag > img {
+    width: 90%;
+  }
+
+  .country-all-detail-container {
+    width: calc(55% - 30px);
+    padding: 0 30px 0 30px;
+  }
+
+  .country-all-detail-container > h2 {
+    margin-top: 80px;
+  }
+
+  .country-details-container {
+    flex-direction: row;
+  }
+
+  .country-details-container > div {
+    width: 40%;
+  }
+
+  .country-details-container > div:last-child {
+    margin-top: 0;
+  }
+
+  .borders-container {
+    align-items: center;
+  }
+
+  .borders-container {
+    flex-direction: row;
+  }
+
+  .borders-label {
+    margin-bottom: 0px;
+  }
+
+  .border-list {
+    padding: 0 6px;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -291,7 +369,7 @@ en esas caracteristicas aplicar estilos especificos */
     max-width: 1140px;
     margin: 0 auto;
   }
-  .actions-container{
+  .actions-container {
     flex-direction: row;
     justify-content: space-between;
   }

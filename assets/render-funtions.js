@@ -30,6 +30,11 @@ function countryCardTemplate(country) {
 }
 
 export function rederBordes(borders) {
-  return borders.map(border => `<a class="borders">${border}</a>`).join('\n')
- 
+  const cca3 = JSON.parse(localStorage.getItem("countriesByCca3"));
+  return borders
+    .map((border) => `
+    <a class="borders" href="/country.html?countryName=${cca3[border].name.common.toLowerCase()}">
+    ${cca3[border].name.common}
+    </a>`)
+    .join("\n");
 }
